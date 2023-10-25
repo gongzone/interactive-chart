@@ -33,10 +33,15 @@ export default class AddValue {
       const id = idInput.value ? Number(idInput.value) : null;
       const value = valueInput.value ? Number(valueInput.value) : null;
 
-      if (!validateId(id, this.state)) {
-        showToast(
-          "id는 0초과의 양수 값만이 가능합니다.\n id는 중복될 수 없습니다."
-        );
+      const isDuplicated = this.state.some((s) => s.id === id);
+
+      if (isDuplicated) {
+        showToast("id는 중복될 수 없습니다.");
+        return;
+      }
+
+      if (!validateId(id)) {
+        showToast("id는 0초과의 양수 값만이 가능합니다.");
         return;
       }
 

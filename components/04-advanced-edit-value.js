@@ -30,7 +30,7 @@ export default class AdvancedEditValue {
     const jsonTextarea = this.$target.querySelector(".json-textarea");
 
     applyBtn.addEventListener("click", () => {
-      if (!validateJson(jsonTextarea.value, this.state)) {
+      if (!validateJson(jsonTextarea.value)) {
         showToast(
           '형식에 맞게 작성해주세요.\n 예시: [{"id": 1, "value": 10}, {"id": 2, "value": 20}]'
         );
