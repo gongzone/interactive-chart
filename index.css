@@ -1,0 +1,331 @@
+/************ 기본 스타일 ************/
+
+*,
+:after,
+:before {
+  box-sizing: border-box;
+  border: 0 solid rgb(24 24 27);
+
+  --background: rgb(255 255 255);
+  --foreground: rgb(24 24 27);
+  --muted: rgb(245 245 245);
+  --graph-line-border: rgb(76 78 85);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+}
+
+ol,
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+html {
+  font-size: 16px;
+}
+
+input {
+  display: flex;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  width: 100%;
+  height: 2.5rem;
+  border-width: 1px;
+  border-radius: 0.2rem;
+  border-color: rgb(212 212 216);
+}
+
+body {
+  margin: 0;
+  background-color: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#applier {
+  display: flex;
+  justify-content: flex-end;
+  padding: 2rem;
+  font-weight: 600;
+}
+
+#app {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 80px;
+  width: 100%;
+  padding: 2rem 1.85rem;
+}
+
+#toast {
+  visibility: hidden;
+  min-width: 12rem;
+  margin-left: -125px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 0.125rem;
+  padding: 1rem;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 1.85rem;
+  font-size: 1.05rem;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+#toast.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.helper-text {
+  font-size: 0.815rem;
+}
+
+.section {
+  width: 100%;
+}
+
+.title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.no-data {
+  padding: 1.5rem 0;
+  text-align: center;
+}
+
+.button-box {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn {
+  color: rgb(17 24 39);
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--background);
+  border-color: rgb(209 213 219);
+  border-width: 1px;
+  border-radius: 9999px;
+  cursor: pointer;
+}
+
+.btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.btn--apply {
+  background-color: rgb(244 244 245);
+  border-radius: 0.5rem;
+}
+
+.btn--delete {
+  background-color: rgb(239 68 68);
+  border-color: rgb(239 68 68);
+  color: var(--background);
+}
+
+/************ 기본 스타일 - End ************/
+
+/************ 그래프 스타일 ************/
+
+#graph {
+  width: 100%;
+  background-color: var(--muted);
+  padding: 3rem;
+  border-width: 1px;
+  overflow-x: auto;
+}
+
+.graph__container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.graph__container--1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.graph__container--2 {
+  grid-template-columns: 1fr 30fr;
+}
+
+.graph__container__inner {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  border-left-width: 1px;
+  border-bottom-width: 1px;
+}
+
+#chart-values {
+  height: calc(100% + 20px);
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chart-line {
+  position: absolute;
+  border-top: 1px dashed var(--graph-line-border);
+  width: 100%;
+  height: 1px;
+  background-color: #eeeeee;
+}
+
+#chart-bars {
+  display: flex;
+  justify-content: start;
+  align-items: end;
+  gap: 1.25rem;
+  height: 100%;
+  padding: 0 2.5rem;
+}
+
+.chart-bars__li {
+  position: relative;
+}
+
+.chart-bars__li__item {
+  background-color: rgb(203 213 225);
+  width: 20px;
+  height: 200px;
+}
+
+.chart-bars__li__id {
+  position: absolute;
+  left: -5px;
+  bottom: -25px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  text-align: center;
+  width: 30px;
+  font-size: 14px;
+}
+
+/************ 그래프 스타일 - End ************/
+
+/************ 값 편집 스타일 ************/
+
+#edit-value {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.edit-table {
+  margin-bottom: 1rem;
+}
+
+.edit-table__tr {
+  border-bottom-width: 1px;
+}
+
+.edit-table__th {
+  vertical-align: middle;
+  text-align: left;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 10rem;
+  height: 3rem;
+}
+
+.edit-table__td {
+  padding: 1rem;
+  vertical-align: middle;
+}
+
+/************ 값 편집 스타일 - End ************/
+
+/************ 값 추가 스타일 ************/
+
+.add-value__container {
+  display: flex;
+  align-items: center;
+  max-width: 40rem;
+  gap: 0.5rem;
+}
+
+.id-input {
+  max-width: 14rem;
+}
+
+.value-input {
+  max-width: 14rem;
+}
+
+/************ 값 추가 스타일 - End ************/
+
+/************ 값 고급 편집 스타일 ************/
+
+.advanced-edit-value__container {
+  display: flex;
+  flex-direction: column;
+  max-width: 32rem;
+  gap: 1.25rem;
+}
+
+.json-textarea {
+  border-width: 1px;
+  width: 100%;
+  min-height: 20rem;
+  overflow-y: auto;
+}
+
+/************ 값 고급 편집 스타일 - End ************/
+
+// 반응형 디자인
+
+@media (min-width: 640px) {
+}
+
+@media (min-width: 768px) {
+  #app {
+    padding: 2rem 6rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  #app {
+    padding: 2rem 10rem;
+  }
+}
+
+@media (min-width: 1280px) {
+}
+
+@media (min-width: 1536px) {
+}
